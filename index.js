@@ -84,15 +84,15 @@ async function MailUser(email,name) {
     let transporter = nodemailer.createTransport({
         service: "gmail",
         auth: {
-            user: "01.srikrishna.08@gmail.com", // generated ethereal user
-            pass: "asusvivobook", // generated ethereal password
+            user: process.env.email, // generated ethereal user
+            pass: process.env.pwd, // generated ethereal password
         },
     });
 
     // send mail with defined transport object
     let info = await transporter.sendMail({
-        from: '01.srikrishna.08@gmail.com', // sender address
-        to: "01.srikrishna.08@gmail.com,"+ email, // list of receivers
+        from: process.env.email, // sender address
+        to: email, // list of receivers
         subject: "welcome "+name, // Subject line
         text: "Hello "+name, // plain text body
         html: "Hello "+name+" Thank you for Registering withh us!", // html body
